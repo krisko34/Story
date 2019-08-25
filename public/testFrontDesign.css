@@ -1,0 +1,103 @@
+/* Columns design */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column {
+    /*
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    width: 100px;
+    display: inline-block;
+  }
+  
+   .row {
+      width: 100%;
+      text-align: center;
+   }
+  
+  #leftColumn {
+    height: 500px;
+    width: 320px;
+    float: left;
+  }
+
+  .profilePic {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    transition: all .3s ease-in-out;
+  }
+  
+  .profilePic:hover {
+    border-radius:0;  
+    cursor: pointer;
+    height: 200px;
+    width: 200px;
+  }
+  
+  .profileButton {
+    margin-top: 5px;
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top,#A9A9A9,#A9A9A9);
+    background-image: -moz-linear-gradient(top,#A9A9A9,#A9A9A9);
+    background-image: -ms-linear-gradient(top, #A9A9A9,#A9A9A9);
+    background-image: -o-linear-gradient(top, #A9A9A9,#A9A9A9);
+    background-image: linear-gradient(to bottom,#A9A9A9,#A9A9A9);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+  .profileButton:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, 	#808080,#808080);
+    background-image: -moz-linear-gradient(top, #808080, #808080);
+    background-image: -ms-linear-gradient(top, #808080, #808080);
+    background-image: -o-linear-gradient(top, #808080, #808080);
+    background-image: linear-gradient(to bottom, #808080, #808080);
+    text-decoration: none;
+  }
+  
+  textarea {
+      font-size: 15px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #ddd;
+  }
+  
+  li a.active {
+    color: white;
+    background-color: #4CAF50;
+  }    

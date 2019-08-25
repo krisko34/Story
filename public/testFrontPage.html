@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="testFrontDesign.css">
+    <script src="index.js"></script>
+    <title>Document</title>
+</head>
+
+
+<body>
+    <!--Navigation-->
+            <ul>
+                    <li><a id="uls" href="testfrontPage.html">Home</a></li>
+                    <li><a id="uls" href="contactPage.html">Contact</a></li>
+                    <li><a id="uls" href="registerPage.html">Register</a></li>
+                    <li><a id="uls" href="loginPage.html">Login</a></li>
+            </ul>
+            <br />
+    <!--Columns-->
+        <div class="row">
+                <div class="column" id="leftColumn" style="background-color:#aaa;">
+                        
+                        <img src="" class="profilePic" alt="Image preview...">
+                        <input type="file" class="profileButton" onchange="previewFile()"> <br/>
+
+                        <input type="button" href="addStory.html" class="profileButton" value="add story"> <br />
+                        <input type="button" href="gallery.html" class="profileButton" value="gallery"> <br />
+                        <input type="button" href="favorites.html" class="profileButton" value="favorites"> <br />
+                        <input type="button" href="friends.html" class="profileButton" value="friends"> <br />
+
+<script>
+    function previewFile(){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+  previewFile();
+</script>
+
+</div>
+                </div>
+                
+                <div class="column" id="rightColumn" style="background-color:#bbb;">
+                   
+                </div>
+              </div>
+            
+</body>
+</html>
