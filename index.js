@@ -1,26 +1,25 @@
 const express = require('express')
 const app = express()
+const registerRouter = express.Router()
 const bodyParser = require('body-parser')
-
+const mongoose = require('mongoose');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded( { extended : true} ))
 //var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var path = require('path')
 var port = 8000
 
-var mongoose = require('mongoose')
-mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost:27017/node-demo')
-
-var storySchema = new mongoose.Schema({
-  writtenStory: String
-})
-
-var Stories = mongoose.model("Stories", storySchema)
 
 // serve html files/pages and design
 //app.use('/cssFiles', app.static(__dirname + '/public'))
 app.use('/', express.static(path.join(__dirname, 'public'))) // app.use('/public',
+
+/* MONGODB SCHEMA FILE
+app.use('/user', express.static(path.join(__dirname, 'api')))
+app.get('/api/user', function (req, res) { 
+  res.sendFile(path.join(__dirname+'/api/user.js'))
+ })
+ */
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname+'/public/testFrontPage.html'))
@@ -47,7 +46,7 @@ app.get('/addStory', function (req, res) {
     res.sendFile(path.join(__dirname+'/public/contactPage.html'))
   })
 
-  app.get('/register', function (req, res) {
+  app.get('/registerPage', function (req, res) {
     res.sendFile(path.join(__dirname+'/public/registerPage.html'))
   })
 
@@ -55,16 +54,13 @@ app.get('/addStory', function (req, res) {
     res.sendFile(path.join(__dirname+'/public/loginPage.html'))
   })
 
-  // collect post data and send it to the dabanase(MONGODB)
-  app.post('/addStory', function (req, res) { // urlencodedParser
-        var myData = new Stories(req.body)
-        myData.save()
-        .then(item => {
-          res.send('item saved to database')
-        })
-        .catch(err => {
-          res.status(400).send('ne stava')
-        })
-  })
+  // Collect post data and send it to the dabanase(MONGODB)
+    const router = require('./addStoryJS.js')
+    app.use(router)
 
-app.listen(port)
+  // Add registration to the server
+  // Implement it the same way ass router(AddStoryJS)
+  const auth = require('./user.js')
+  app.use(registerRouter)
+  
+  app.listen(port)
